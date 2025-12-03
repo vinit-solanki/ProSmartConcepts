@@ -3,7 +3,7 @@ import time
 import json
 import requests
 from io import BytesIO
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 from PIL import Image
 import imagehash
@@ -13,15 +13,44 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
-# ============ CONFIG ============
+
+# =====================================================
+#                   CONFIG
+# =====================================================
 
 INPUT_JSON = "product_final.json"
 OUTPUT_ROOT = "prosmart_images"
 
 MAX_IMAGES_PER_PRODUCT = 25
+
 MIN_WIDTH = 200
 MIN_HEIGHT = 200
 MIN_NON_WHITE_RATIO = 0.20
+
+TARGET_IDS = {
+    "prod_0007",
+    "prod_0104",
+    "prod_0102",
+    "prod_0112",
+    "prod_0107",
+    "prod_0005",
+    "prod_0033",
+    "prod_0030",
+    "prod_0080",
+    "prod_0077",
+    "prod_0125",
+    "prod_0089",
+    "prod_0086",
+    "prod_0137",
+    "prod_0134",
+    "prod_0095",
+    "prod_0122",
+    "prod_0091",
+    "prod_0116",
+    "prod_0057",
+    "prod_0105",
+    "prod_0113"
+}
 
 HEADERS = {
     "User-Agent": (
@@ -32,7 +61,9 @@ HEADERS = {
 }
 
 
-# ============ SELENIUM ============
+# =====================================================
+#                   SELENIUM
+# =====================================================
 
 chrome_opts = Options()
 chrome_opts.add_argument("--headless=new")
@@ -44,10 +75,11 @@ service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=chrome_opts)
 
 
-# ============ HELPERS ============
+# =====================================================
+#             UTILITY FUNCTIONS
+# =====================================================
 
 def clean(name: str):
-    """Sanitize folder/file names."""
     if not name:
         return "Unknown"
     s = "".join(c for c in name if c.isalnum() or c in (" ", "_", "-"))
@@ -65,19 +97,13 @@ def download_bytes(url):
 
 
 def is_valid_image(img: Image.Image):
-    """Basic quality checks."""
     w, h = img.size
     if w < MIN_WIDTH or h < MIN_HEIGHT:
         return False
-
     gray = img.convert("L")
     bright_pixels = sum(1 for px in gray.getdata() if px > 245)
     total = w * h
-
-    if (total - bright_pixels) / total < MIN_NON_WHITE_RATIO:
-        return False
-
-    return True
+    return (total - bright_pixels) / total >= MIN_NON_WHITE_RATIO
 
 
 def img_hash(content):
@@ -96,7 +122,9 @@ def save_image(content, path):
         pass
 
 
-# ============ AMAZON SCRAPING ============
+# =====================================================
+#              AMAZON SCRAPING
+# =====================================================
 
 def extract_amazon_images(page_source):
     soup = BeautifulSoup(page_source, "html.parser")
@@ -107,8 +135,7 @@ def extract_amazon_images(page_source):
         dyn = main.get("data-a-dynamic-image")
         if dyn:
             try:
-                dyn_json = json.loads(dyn)
-                urls.update(dyn_json.keys())
+                urls.update(json.loads(dyn).keys())
             except:
                 pass
         if main.get("src"):
@@ -120,39 +147,36 @@ def extract_amazon_images(page_source):
             if u and u.startswith("http"):
                 urls.add(u)
 
-    cleaned = []
-    for u in urls:
-        u = u.split("?")[0]
-        if u.startswith("//"):
-            u = "https:" + u
-        cleaned.append(u)
-
-    return cleaned
+    return [u.split("?")[0] for u in urls]
 
 
-# ============ GENERIC PAGE IMAGE SCRAPER ============
+# =====================================================
+#          GENERIC FALLBACK SCRAPER
+# =====================================================
 
 def scrape_all_images_from_page(url):
-    """Scrape ALL <img> URLs from any webpage."""
     print(f"  🌐 Scraping fallback page: {url}")
 
     try:
         driver.get(url)
         time.sleep(1.2)
     except:
-        print("  ❌ Failed to load fallback page.")
+        print("  ❌ Could not load fallback URL")
         return []
 
     soup = BeautifulSoup(driver.page_source, "html.parser")
-
     urls = set()
 
     for img in soup.find_all("img"):
-        src = img.get("src") or img.get("data-src") or img.get("data-lazy-src")
+        src = (
+            img.get("src")
+            or img.get("data-src")
+            or img.get("data-lazy-src")
+            or img.get("data-original")
+        )
         if not src:
             continue
 
-        # Fix relative URLs
         if src.startswith("//"):
             src = "https:" + src
         elif src.startswith("/"):
@@ -161,35 +185,29 @@ def scrape_all_images_from_page(url):
         if src.startswith("http"):
             urls.add(src)
 
-    cleaned = list(urls)
-    print(f"  🌟 Found {len(cleaned)} fallback images")
-
-    return cleaned
+    print(f"  🌟 Found {len(urls)} fallback images")
+    return list(urls)
 
 
-# ============ MAIN PRODUCT PROCESSOR ============
+# =====================================================
+#                   PROCESS PRODUCT
+# =====================================================
 
 def process_product(prod, category_name, subcategory_name):
     pid = prod["product_id"]
     pname = clean(prod["product_name"])
 
-    # FOLDER: category/subcategory/product_id/
-    folder = os.path.join(
-        OUTPUT_ROOT,
-        clean(category_name),
-        clean(subcategory_name),
-        str(pid)
-    )
-
+    folder = os.path.join(OUTPUT_ROOT, clean(category_name), clean(subcategory_name), pid)
     os.makedirs(folder, exist_ok=True)
+
+    print(f"\n▶ Processing: {pid} ({pname})")
 
     seen = set()
     count = 0
 
-    print(f"\n▶ Processing: {pid} ({pname})")
-
-    # ========== PRIMARY SOURCE LOOP ==========
-
+    # ------------------------
+    # PRIMARY DOWNLOAD PHASE
+    # ------------------------
     for url in prod.get("image_urls", []):
         if count >= MAX_IMAGES_PER_PRODUCT:
             break
@@ -203,12 +221,11 @@ def process_product(prod, category_name, subcategory_name):
             except:
                 imgs = []
         else:
-            imgs = [url]  # direct non-Amazon image link
+            imgs = [url]
 
         for img_url in imgs:
             if count >= MAX_IMAGES_PER_PRODUCT:
                 break
-
             if not img_url:
                 continue
 
@@ -229,16 +246,16 @@ def process_product(prod, category_name, subcategory_name):
                 continue
 
             seen.add(h)
-
             count += 1
             save_image(content, os.path.join(folder, f"{pid}_img{count}.jpg"))
 
-    # ========== FALLBACK IF NO IMAGES FOUND ==========
-
+    # ------------------------
+    # FALLBACK IF 0 IMAGES
+    # ------------------------
     if count == 0:
-        print("  ⚠ No images found → FALLBACK TO PAGE SCRAPING!")
-
+        print("  ⚠ No images found → FALLBACK MODE")
         fallback_url = prod["image_urls"][0] if prod["image_urls"] else None
+
         if fallback_url:
             fallback_imgs = scrape_all_images_from_page(fallback_url)
 
@@ -255,9 +272,7 @@ def process_product(prod, category_name, subcategory_name):
                 except:
                     continue
 
-                if not is_valid_image(img):
-                    continue
-
+                # NO strict filtering — ONLY dedupe
                 h = img_hash(content)
                 if not h or h in seen:
                     continue
@@ -269,7 +284,9 @@ def process_product(prod, category_name, subcategory_name):
     print(f"  ✔ Saved {count} images")
 
 
-# ============ MAIN ============
+# =====================================================
+#                   MAIN SCRIPT
+# =====================================================
 
 def main():
     with open(INPUT_JSON, "r", encoding="utf-8") as f:
@@ -278,6 +295,11 @@ def main():
     for cat_name, cat_data in data["categories"].items():
         for sub_name, sub_data in cat_data["subcategories"].items():
             for prod in sub_data["products"]:
+
+                # ONLY RUN ON TARGET prod_ids
+                if prod["product_id"] not in TARGET_IDS:
+                    continue
+
                 process_product(prod, cat_name, sub_name)
 
     driver.quit()
