@@ -96,7 +96,7 @@ export const InfiniteMovingCards = ({
             className="
               relative w-[360px] shrink-0
               rounded-2xl border border-dashed border-[#9bb3cc] 
-              bg-white/80 backdrop-blur-md
+              bg-white/20 backdrop-blur-md
               shadow-[0px_8px_25px_rgba(0,0,0,0.08)]
               overflow-hidden transition-all duration-300
               hover:-translate-y-2 hover:shadow-[0px_12px_30px_rgba(0,0,0,0.15)]

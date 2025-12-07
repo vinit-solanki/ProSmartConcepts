@@ -17,6 +17,7 @@ import ProductCatalog from "./ProductCatalog";
 import WorkPage from "./WorkPage";
 import ReviewsPage from "./ReviewsPage";
 import ContactUs from "./ContactUs";
+import Footer from "./Footer";
 
 function LandingPage() {
     const products = [
@@ -174,6 +175,8 @@ function LandingPage() {
             <ReviewsPage />
 
             <ContactUs/>
+
+            <Footer/>
         </div>
     );
 }
