@@ -13,10 +13,10 @@ function ReviewsPage() {
         backgroundPosition: "center",
       }}
     >
-    <hr className="text-black w-full border-1 border-black/50  mb-8"/>
       {/* Title */}
       <div
         className="
+        prosmart-heading
           text-2xl text-white 
           bg-black/40 
           rounded-xl 

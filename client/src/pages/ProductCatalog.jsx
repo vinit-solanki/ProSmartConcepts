@@ -20,10 +20,10 @@ function ProductCatalog() {
     ];
 
     return (
-        <div className="w-full bg-[#d2e5ff] py-4 flex flex-col items-center">
+        <div className="w-full bg-[#d2e5ff] py-8 flex flex-col items-center">
             
             {/* Heading */}
-            <h2 className="text-2xl font-semibold underline underline-offset-8 mb-10">
+            <h2 className="prosmart-heading text-3xl underline underline-offset-8 mb-10">
                 Our Product Catalog
             </h2>
 
@@ -42,7 +42,7 @@ function ProductCatalog() {
             </div>
 
             {/* Button */}
-            <button className="cursor-pointer mt-10 border border-black px-6 py-2 rounded-lg shadow-sm hover:bg-black hover:text-white transition">
+            <button className="cursor-pointer mt-10 border border-black px-6 py-2 rounded-lg shadow-sm hover:bg-black/80 hover:text-white transition">
                 View Products
             </button>
         </div>

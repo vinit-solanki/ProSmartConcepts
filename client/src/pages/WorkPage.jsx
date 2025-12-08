@@ -32,6 +32,7 @@ function WorkPage() {
 
       {/* TITLE */}
       <div className="
+      prosmart-heading
         text-3xl
         text-white 
         bg-black/40 
@@ -52,7 +53,7 @@ function WorkPage() {
         {/* CENTER DASHED LINE */}
         <div className="
           absolute top-[72px] left-0 right-0
-          border-2 border-black  
+          border-1 border-dashed border-black  
           opacity-70
           w-[100%]
         "></div>

@@ -7,7 +7,7 @@ function ContactUs() {
     <div className="w-full bg-[#d2e5ff] flex flex-col items-center py-12">
 
       {/* Title */}
-      <h2 className="text-3xl font-semibold underline underline-offset-4 mb-12 text-[#123555]">
+      <h2 className="prosmart-heading text-3xl font-semibold underline underline-offset-4 mb-12 text-[#123555]">
         Contact Us
       </h2>
 
