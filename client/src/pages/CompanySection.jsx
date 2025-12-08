@@ -5,7 +5,7 @@ function CompanySection() {
 
     return (
         <div className="w-full bg-white p-6 flex flex-col items-center">
-            <h2 className="text-lg font-semibold underline underline-offset-4 mb-5">
+            <h2 className="prosmart-heading text-2xl underline underline-offset-4 mb-5">
                 Our Partners
             </h2>
 

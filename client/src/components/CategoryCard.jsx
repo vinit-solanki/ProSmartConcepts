@@ -7,7 +7,6 @@ function CategoryCard({ image, title }) {
                 bg-transparent 
                 rounded-lg 
                 overflow-hidden 
-                border border-black 
                 cursor-pointer
                 shadow-md
                 transition-all duration-300 
@@ -32,11 +31,11 @@ function CategoryCard({ image, title }) {
             {/* TITLE WITH SLIDE-UP ANIMATION */}
             <div
                 className="
-                    bg-black/60 
+                    bg-[#7e9199] 
                     py-3 
                     text-center 
                     transition-all duration-300 
-                    hover:bg-black/80
+                    hover:bg-[#5a7078]
                 "
             >
                 <p className="text-white font-semibold tracking-wide">{title}</p>

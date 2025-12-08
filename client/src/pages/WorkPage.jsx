@@ -32,14 +32,14 @@ function WorkPage() {
 
       {/* TITLE */}
       <div className="
-      prosmart-heading
+        prosmart-heading
         text-3xl
         text-white 
         bg-black/40 
         rounded-xl 
         border border-white/40  
         px-10 py-4 
-        font-semibold tracking-wide
+        tracking-wide
         shadow-lg backdrop-blur-sm 
         animate-fadeIn
         z-10
@@ -75,9 +75,8 @@ function WorkPage() {
             {/* CARD BOX */}
             <div className="
               w-full h-full 
-              bg-[#5a5f67] 
+              bg-[#7e9199] 
               rounded-2xl 
-              border border-black 
               px-6 
               pt-24 pb-6
               text-center 
@@ -91,7 +90,7 @@ function WorkPage() {
             <div className="
               absolute -top-12 left-1/2 -translate-x-1/2
               w-24 h-24 
-              bg-[#ff6a6a] 
+              bg-[#30a4d9] 
               rounded-full 
               flex items-center justify-center
               text-white text-3xl font-bold

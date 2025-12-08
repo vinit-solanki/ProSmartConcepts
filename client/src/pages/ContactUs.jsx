@@ -17,10 +17,10 @@ function ContactUs() {
         {/* LEFT — FORM */}
         <div
           className="
-            bg-black/10 
-            backdrop-blur-md 
+            bg-white 
+            backdrop-blur-sm
             p-8 
-            rounded-sm
+            rounded-md
             border border-white/20  
             shadow-[0_6px_20px_rgba(0,0,0,0.25)]
             text-white
@@ -36,9 +36,8 @@ function ContactUs() {
       w-full p-3 rounded-md
       bg-white/10 text-white 
       placeholder-black
-      border border-white/20 
+      border border-black/20 
       backdrop-blur-sm 
-      shadow-inner shadow-black/20 
       focus:outline-none focus:ring-2 focus:ring-[#2b9ad1]
       transition-all
     "
@@ -53,9 +52,8 @@ function ContactUs() {
       w-full p-3 rounded-md
       bg-white/10 text-white 
       placeholder-black
-      border border-white/20 
+      border border-black/20 
       backdrop-blur-sm 
-      shadow-inner shadow-black/20
       focus:outline-none focus:ring-2 focus:ring-[#2b9ad1]
       transition-all
     "
@@ -69,9 +67,8 @@ function ContactUs() {
       w-full p-3 rounded-md
       bg-white/10 text-white 
       placeholder-black
-      border border-white/20 
+      border border-black/20 
       backdrop-blur-sm 
-      shadow-inner shadow-black/20
       focus:outline-none focus:ring-2 focus:ring-[#2b9ad1]
       transition-all
     "
@@ -85,10 +82,9 @@ function ContactUs() {
       w-full p-3 h-32 rounded-md
       bg-white/10 text-white 
       placeholder-black
-      border border-white/20 
+      border border-black/20 
       backdrop-blur-sm 
       resize-none
-      shadow-inner shadow-black/30
       focus:outline-none focus:ring-2 focus:ring-[#2b9ad1]
       transition-all
     "
@@ -145,17 +141,17 @@ function ContactUs() {
           {/* ADDRESS BOX */}
           <div
             className="
-              bg-black/10 
+              bg-white 
               backdrop-blur-md 
               p-6 
-              rounded-sm
+              rounded-md
               border border-white/20  
               shadow-[0_4px_12px_rgba(0,0,0,0.25)]
               text-sm leading-6 text-gray-200
             "
           >
-            <p className="font-medium text-gray-800">
-              Gala No 25/26, Vaibhav Industrial Estate, PROSMART CONCEPTS,
+            <p className="font-bold text-gray-800">
+              Unit No 25/26, Vaibhav Industrial Estate, PROSMART CONCEPTS,
               opp. ADONIS RAHEJA ACROPOLIS, near Govandi Police Station Lane,
               Chembur, Mumbai, Maharashtra 400088
             </p>

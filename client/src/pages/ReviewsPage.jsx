@@ -22,7 +22,7 @@ function ReviewsPage() {
           rounded-xl 
           border border-white/40  
           px-10 py-3 
-          font-semibold shadow-lg 
+          shadow-lg 
           mb-12
         "
       >
