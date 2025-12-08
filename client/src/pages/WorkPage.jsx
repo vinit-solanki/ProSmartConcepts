@@ -27,13 +27,8 @@ function WorkPage() {
         flex flex-col items-center
         pt-16 pb-20
       "
-      style={{
-        backgroundImage: `url(${WorkingImg})`,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "top center",
-      }}
     >
+      <div className="w-full h-1/2 z-0 bg-[#30a4d9]"></div>
 
       {/* TITLE */}
       <div className="
@@ -41,7 +36,7 @@ function WorkPage() {
         text-white 
         bg-black/40 
         rounded-xl 
-        border border-white/40 border-dashed 
+        border border-white/40  
         px-10 py-4 
         font-semibold tracking-wide
         shadow-lg backdrop-blur-sm 
@@ -57,7 +52,7 @@ function WorkPage() {
         {/* CENTER DASHED LINE */}
         <div className="
           absolute top-[72px] left-0 right-0
-          border-2 border-black border-dashed 
+          border-2 border-black  
           opacity-70
           w-[100%]
         "></div>
@@ -81,7 +76,7 @@ function WorkPage() {
               w-full h-full 
               bg-[#5a5f67] 
               rounded-2xl 
-              border border-black border-dashed
+              border border-black 
               px-6 
               pt-24 pb-6
               text-center 

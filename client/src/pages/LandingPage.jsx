@@ -69,7 +69,7 @@ function LandingPage() {
                 <nav
                     className="
         hidden md:flex
-        absolute top-0 left-0 w-full h-auto 
+        absolute top-0 left-0 w-full h-16 
         bg-black/50 backdrop-blur-sm 
         flex-row 
         items-center justify-between 
@@ -84,45 +84,37 @@ function LandingPage() {
                         <p className="text-white font-semibold text-lg cursor-pointer hover:text-white/20 transition duration-250">Contact Us</p>
                     </div>
 
-                    <div className="flex items-center">
+                    {/* <div className="flex items-center">
                         <input
                             type="text"
-                            className="h-10 w-72 px-4 border border-gray-700 border-dashed rounded-l-md bg-white text-sm"
+                            className="h-10 w-72 px-4 border rounded-l-md text-sm"
                         />
-                        <button className="h-10 px-4 bg-[#ff5757] flex items-center justify-center rounded-r-md border border-gray-700 border-dashed border-l-0">
-                            <FaSearch className="text-white text-base" />
+                        <button className="h-10 px-4 bg-[#30a4d9] flex items-center justify-center rounded-r-md border border-white border-l-0">
+                            <FaSearch className="text-black text-base" />
                         </button>
-                    </div>
+                    </div> */}
                 </nav>
 
 
                 {/* HERO CONTENT */}
-                <div className="
-                    relative w-full h-full 
-                    flex flex-col lg:flex-row 
-                    items-center justify-between 
-                    px-6 sm:px-12 lg:px-24 
-                    pt-28 md:pt-20 lg:pt-28 
-                    z-10
-                ">
-
-                    {/* LEFT CONTENT */}
-                    <div className="w-full lg:w-1/2 text-white pr-0 lg:pr-6 text-center lg:text-left">
-                        <h1 className="font-bold italic text-4xl sm:text-5xl lg:text-6xl leading-[50px] sm:leading-[60px] lg:leading-[70px] underline decoration-[#d2e5ff] decoration-4 underline-offset-8">
+                <div className="relative w-full h-screen flex items-center justify-end z-10">
+                    <div className="flex flex-col justify-center items-center text-white text-center px-4">
+                        <h1 className="prosmart-heading text-3xl sm:text-5xl lg:text-7xl leading-[50px] sm:leading-[60px] lg:leading-[70px] underline decoration-[#d2e5ff] decoration-4 underline-offset-8">
                             ProSmart Concepts
                         </h1>
 
-                        <p className="mt-4 sm:mt-6 text-base sm:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 text-[#d2e5ff] italic font-semibold">
-                            a dominant player in business gifting market in India. For the past 17 years, we have been renowned for introducing several cutting-ed
+                        <p className="mt-4 sm:mt-6 text-base sm:text-lg leading-relaxed max-w-xl text-[#d2e5ff] italic font-semibold">
+                            a dominant player in business gifting market in India. For the past
+                            17 years, we have been renowned for introducing several cutting-ed
                         </p>
 
-                        <div className="grid grid-cols-2 sm:grid-cols-2 text-start gap-5 mt-6 sm:mt-8 max-w-xl mx-auto lg:mx-0 font-semibold">
+                        <div className="grid grid-cols-2 sm:grid-cols-2 gap-5 mt-6 sm:mt-8 max-w-xl font-semibold">
                             {[BoxIcon1, BoxIcon2, BoxIcon3, BoxIcon4].map((icon, idx) => (
-                                <div key={idx} className="flex items-center gap-3 bg-[#d2e5ff] bg-opacity-15 rounded-xl p-3">
-                                    <div className="w-10 sm:w-12 h-10 sm:h-12 bg-[#ff5757] rounded-full flex justify-center items-center border-black border-dashed border">
+                                <div key={idx} className="flex items-center gap-3 bg-[#d2e5ff]/15 rounded-xl p-3">
+                                    <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-full flex justify-center items-center">
                                         <img src={icon} />
                                     </div>
-                                    <p className="text-black text-sm leading-snug">
+                                    <p className="text-white text-sm">
                                         Lorem ipsum dolor <br /> sit amet, consectetur
                                     </p>
                                 </div>
@@ -131,7 +123,7 @@ function LandingPage() {
                     </div>
 
                     {/* RIGHT CONTENT */}
-                    <div className="w-full lg:w-1/2 h-full flex flex-col justify-center items-center lg:items-end p-6 lg:p-12 mt-10 lg:mt-0">
+                    <div className="w-full lg:w-1/2 h-full flex flex-col justify-center items-center">
                         <div className="text-center bg-black/10 border border-white/20 border-dashed rounded-xl p-6">
 
                             <p className="text-white text-lg mb-4 font-semibold">
@@ -164,6 +156,7 @@ function LandingPage() {
                     </div>
 
                 </div>
+                
             </section>
 
             <CompanySection />
@@ -174,9 +167,9 @@ function LandingPage() {
 
             <ReviewsPage />
 
-            <ContactUs/>
+            <ContactUs />
 
-            <Footer/>
+            <Footer />
         </div>
     );
 }

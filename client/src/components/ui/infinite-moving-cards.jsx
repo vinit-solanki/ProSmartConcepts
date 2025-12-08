@@ -95,7 +95,7 @@ export const InfiniteMovingCards = ({
             key={idx}
             className="
               relative w-[360px] shrink-0
-              rounded-2xl border border-dashed border-[#9bb3cc] 
+              rounded-2xl border  border-[#9bb3cc] 
               bg-white/20 backdrop-blur-md
               shadow-[0px_8px_25px_rgba(0,0,0,0.08)]
               overflow-hidden transition-all duration-300

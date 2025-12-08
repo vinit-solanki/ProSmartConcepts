@@ -13,14 +13,14 @@ function ReviewsPage() {
         backgroundPosition: "center",
       }}
     >
-    <hr className="text-black w-full border-1 border-black/50 border-dashed mb-8"/>
+    <hr className="text-black w-full border-1 border-black/50  mb-8"/>
       {/* Title */}
       <div
         className="
           text-2xl text-white 
           bg-black/40 
           rounded-xl 
-          border border-white/40 border-dashed 
+          border border-white/40  
           px-10 py-3 
           font-semibold shadow-lg 
           mb-12
@@ -31,7 +31,7 @@ function ReviewsPage() {
 
       {/* Infinite Cards */}
       <div className="w-full flex justify-center">
-        <div className="max-w-6xl w-full">
+        <div className="max-w-7xl w-full">
           <InfiniteMovingCardsDemo />
         </div>
       </div>

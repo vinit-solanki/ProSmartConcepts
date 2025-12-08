@@ -2,7 +2,7 @@ import React from "react";
 import CategoryCard from "../components/CategoryCard";
 
 // Import images
-import Cat1 from "../assets/products_cat1.png";
+import Cat1 from "../assets/products_cat1.jpg";
 import Cat2 from "../assets/products_cat2.png";
 import Cat3 from "../assets/products_cat3.png";
 import Cat4 from "../assets/products_cat4.png";

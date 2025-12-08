@@ -21,7 +21,7 @@ function ContactUs() {
             backdrop-blur-md 
             p-8 
             rounded-sm
-            border border-white/20 border-dashed 
+            border border-white/20  
             shadow-[0_6px_20px_rgba(0,0,0,0.25)]
             text-white
           "
@@ -126,7 +126,7 @@ function ContactUs() {
     h-48 
     rounded-2xl 
     overflow-hidden
-    border border-white/20 border-dashed 
+    border border-white/20  
     shadow-[0_4px_12px_rgba(0,0,0,0.25)]
   "
 >
@@ -149,7 +149,7 @@ function ContactUs() {
               backdrop-blur-md 
               p-6 
               rounded-sm
-              border border-white/20 border-dashed 
+              border border-white/20  
               shadow-[0_4px_12px_rgba(0,0,0,0.25)]
               text-sm leading-6 text-gray-200
             "

@@ -7,7 +7,7 @@ function CategoryCard({ image, title }) {
                 bg-transparent 
                 rounded-lg 
                 overflow-hidden 
-                border border-black border-dashed
+                border border-black 
                 cursor-pointer
                 shadow-md
                 transition-all duration-300 
