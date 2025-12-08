@@ -25,7 +25,7 @@ function WorkPage() {
         bg-[#d2e5ff]
         relative 
         flex flex-col items-center
-        pt-16 pb-20
+        pt-16 pb-4
       "
     >
       <div className="w-full h-1/2 z-0 bg-[#30a4d9]"></div>

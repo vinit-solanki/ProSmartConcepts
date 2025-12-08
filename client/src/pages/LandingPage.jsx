@@ -97,7 +97,7 @@ function LandingPage() {
 
 
                 {/* HERO CONTENT */}
-                <div className="relative w-full h-screen flex items-center justify-end z-10">
+                <div className="p-16 relative w-full min-h-screen flex flex-col md:flex-row items-center justify-end z-10">
                     <div className="flex flex-col justify-center items-center text-white text-center px-4">
                         <h1 className="prosmart-heading text-3xl sm:text-5xl lg:text-7xl leading-[50px] sm:leading-[60px] lg:leading-[70px] underline decoration-[#d2e5ff] decoration-4 underline-offset-8">
                             ProSmart Concepts
@@ -108,14 +108,14 @@ function LandingPage() {
                             17 years, we have been renowned for introducing several cutting-ed
                         </p>
 
-                        <div className="grid grid-cols-2 sm:grid-cols-2 gap-5 mt-6 sm:mt-8 max-w-xl font-semibold">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-6 sm:mt-8 max-w-xl font-semibold">
                             {[BoxIcon1, BoxIcon2, BoxIcon3, BoxIcon4].map((icon, idx) => (
                                 <div key={idx} className="flex items-center gap-3 bg-[#d2e5ff]/15 rounded-xl p-3">
-                                    <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-full flex justify-center items-center">
-                                        <img src={icon} />
+                                    <div className="rounded-full flex justify-center items-center">
+                                        <img src={icon} className="w-12 md:w-15 lg:w-15"/>
                                     </div>
-                                    <p className="text-white text-sm">
-                                        Lorem ipsum dolor <br /> sit amet, consectetur
+                                    <p className="text-white text-start text-sm">
+                                        Lorem ipsum dolor sit amet, consectetur
                                     </p>
                                 </div>
                             ))}
@@ -123,7 +123,7 @@ function LandingPage() {
                     </div>
 
                     {/* RIGHT CONTENT */}
-                    <div className="w-full lg:w-1/2 h-full flex flex-col justify-center items-center">
+                    <div className="mt-7 w-full lg:w-1/2 h-full flex flex-col justify-center items-center">
                         <div className="text-center bg-black/10 border border-white/20 border-dashed rounded-xl p-6">
 
                             <p className="text-white text-lg mb-4 font-semibold">

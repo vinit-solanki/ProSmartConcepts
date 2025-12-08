@@ -30,7 +30,7 @@ function ReviewsPage() {
       </div>
 
       {/* Infinite Cards */}
-      <div className="w-full flex justify-center">
+      <div className="w-full flex justify-center items-center">
         <div className="max-w-7xl w-full">
           <InfiniteMovingCardsDemo />
         </div>
