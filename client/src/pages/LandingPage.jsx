@@ -19,6 +19,8 @@ import ReviewsPage from "./ReviewsPage";
 import ContactUs from "./ContactUs";
 import Footer from "./Footer";
 
+import { Link } from "react-router-dom";
+
 function LandingPage() {
     const products = [
         { title: "MiLi MiTag Duo Item Finder", image: MiLiTag, link: "#" },
@@ -66,33 +68,33 @@ function LandingPage() {
                 />
 
                 {/* NAV */}
-                <nav
-                    className="
-        hidden md:flex
-        absolute top-0 left-0 w-full h-16 
-        bg-black/50 backdrop-blur-sm 
-        flex-row 
-        items-center justify-between 
-        px-12 py-3 z-20
-    "
-                >
-                    <img src={ProSmartLogoLg} alt="logo" className="w-40" />
+                                <nav
+                        className="
+                        hidden md:flex
+                        absolute top-0 left-0 w-full h-16 
+                        bg-black/50 backdrop-blur-sm 
+                        flex-row 
+                        items-center justify-between 
+                        px-12 py-3 z-20
+                    "
+                                >
+                                    <img src={ProSmartLogoLg} alt="logo" className="w-40" />
 
-                    <div className="flex items-center gap-10">
-                        <p className="text-white font-semibold text-lg cursor-pointer hover:text-white/20 transition duration-250">Products</p>
-                        <p className="text-white font-semibold text-lg cursor-pointer hover:text-white/20 transition duration-250">About</p>
-                        <p className="text-white font-semibold text-lg cursor-pointer hover:text-white/20 transition duration-250">Contact Us</p>
-                    </div>
+                                    <div className="flex items-center gap-10">
+                                        <Link to="/products" className="text-white font-semibold text-lg cursor-pointer hover:text-white/20 transition duration-250">Products</Link>
+                                        <p className="text-white font-semibold text-lg cursor-pointer hover:text-white/20 transition duration-250">About</p>
+                                        <p className="text-white font-semibold text-lg cursor-pointer hover:text-white/20 transition duration-250">Contact Us</p>
+                                    </div>
 
-                    {/* <div className="flex items-center">
-                        <input
-                            type="text"
-                            className="h-10 w-72 px-4 border rounded-l-md text-sm"
-                        />
-                        <button className="h-10 px-4 bg-[#30a4d9] flex items-center justify-center rounded-r-md border border-white border-l-0">
-                            <FaSearch className="text-black text-base" />
-                        </button>
-                    </div> */}
+                                    {/* <div className="flex items-center">
+                                        <input
+                                            type="text"
+                                            className="h-10 w-72 px-4 border rounded-l-md text-sm"
+                                        />
+                                        <button className="h-10 px-4 bg-[#30a4d9] flex items-center justify-center rounded-r-md border border-white border-l-0">
+                                            <FaSearch className="text-black text-base" />
+                                        </button>
+                                    </div> */}
                 </nav>
 
 
